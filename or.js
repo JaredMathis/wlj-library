@@ -1,8 +1,11 @@
 const assert = require("./assert");
+const args = require("./args");
+const isBoolean = require("./isBoolean");
 
 module.exports = or;
 
 function or(a, b) {
+    args(arguments, isBoolean, isBoolean);
     return a || b;
 }
 

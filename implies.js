@@ -1,10 +1,13 @@
 const assert = require('./assert');
 const or = require('./or');
 const not = require('./not');
+const args = require('./args');
+const isBoolean = require('./isBoolean');
 
 module.exports = implies;
 
 function implies(a, b) {
+    args(arguments, isBoolean, isBoolean);
     return or(not(a), b);
 }
 
