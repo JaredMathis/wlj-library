@@ -11,5 +11,6 @@ function args() {
     for (let i = 0; i < a.length; i++) {
         let type = arguments[i + 1]
         assert(() => isFunction(type), {arguments});
+        assert(() => type(a[i]));
     }
 }

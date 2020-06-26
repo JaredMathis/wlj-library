@@ -1,6 +1,7 @@
 const args = require("./args");
 const isFunction = require("./isFunction");
 const assert = require("./assert");
+const isBoolean = require("./isBoolean");
 
 module.exports = throws;
 
@@ -40,3 +41,12 @@ try {
     success = true;
 }
 assert(() => success);
+
+args([]);
+// Too many args
+throws(() => args([1]));
+args([true], isBoolean);
+// Too many args
+throws(() => args([true, true], isBoolean));
+// Too few args
+throws(() => args([true, true], isBoolean, isBoolean, isBoolean));
