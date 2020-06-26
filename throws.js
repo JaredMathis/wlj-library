@@ -1,32 +1,42 @@
 const args = require("./args");
 const isFunction = require("./isFunction");
+const assert = require("./assert");
 
 module.exports = throws;
 
+let log = false;
+
 function throws(lambda) {
+    if (log) console.log(throws.name + ' entered ' + lambda);
     args(arguments, isFunction);
 
+    let success;
     try {
         lambda();
-        throw new Error('Expecting exception');
+        success = false;
     } catch (e) {
+        success = true;
+    }
 
+    if (log) console.log({success});
+    if (!success) {
+        console.log(throws.name + ' error');
+        console.log(lambda.toString());
+        throw new Error('Expecting exception');
     }
 }
 
-try {
-    throws(() => {
-        throw new Error('error');
-    });
-    throw new Error('should not be here')
-} catch (e) {
+throws(() => {
+    throw new Error('error');
+});
 
-}
-
+let success;
 try {
     throws(() => {
         return null;
     });
+    success = false;
 } catch (e) {
-    throw new Error('should not be here')
+    success = true;
 }
+assert(() => success);
