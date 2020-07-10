@@ -7,3 +7,4 @@ module.exports.or = require('./or');
 module.exports.implies = require('./implies');
 module.exports.throws = require('./throws');
 module.exports.isString = require('./isString');
+module.exports.isString = require('./isInteger');
