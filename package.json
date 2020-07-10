@@ -1,6 +1,6 @@
 {
   "name": "wlj-library",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "To run tests:",
   "main": "index.js",
   "scripts": {
