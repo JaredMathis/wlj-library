@@ -31,14 +31,18 @@ throws(() => {
     throw new Error('error');
 });
 
+let consoleLog = console.log;
 let success;
 try {
+    console.log = () => {};
     throws(() => {
         return null;
     });
     success = false;
 } catch (e) {
     success = true;
+} finally {
+    console.log = consoleLog;
 }
 assert(() => success);
 
